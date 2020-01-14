@@ -46,4 +46,16 @@ inputs:
       prefix: --memory
 
 outputs:
+  contigs:
+    type: File
+    outputBinding:
+      glob: contigs.fasta
+  scaffolds:
+    type: File
+    outputBinding:
+      glob: scaffolds.fasta
+  output_directory:
+    type: Directory
+    outputBinding:
+      glob: .
   

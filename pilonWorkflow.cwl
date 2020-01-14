@@ -26,10 +26,13 @@ inputs:
     type: File
   reads_fwd:
     label: Short read forward reads.
-    type: File
+    type: File?
   reads_rev:
     label: Short read reverse reads.
-    type: File
+    type: File?
+  reads_interleaved:
+    label: Interleaved forward and reverse short reads.
+    type: File?
 
 outputs:
   polished_assembly:
@@ -52,6 +55,7 @@ steps:
       index_files: bowtie2_indexing/index_files
       reads_fwd: reads_fwd
       reads_rev: reads_rev
+      reads_interleaved: reads_interleaved
     out: [alignment_map]
   sam_sorting:
     label: Sort alignment map.

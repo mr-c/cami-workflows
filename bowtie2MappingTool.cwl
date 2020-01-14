@@ -39,9 +39,14 @@ inputs:
       prefix: "-1"
   reads_rev:
     label: File with reverse paired-end reads (may be zipped as .gz or .bz2).
-    type: File
+    type: File?
     inputBinding:
       prefix: "-2"
+  reads_interleaved:
+    label: File with interleaved paired-end reads (may be zipped as .gz or .bz2).
+    type: File?
+    inputBinding:
+      prefix: "--interleaved"
   reads_unpaired:
     label: File with unpaired reads (may be zipped as .gz or .bz2).
     type: File?
