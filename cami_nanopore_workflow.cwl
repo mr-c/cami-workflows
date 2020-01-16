@@ -94,6 +94,7 @@ steps:
       nanopore_raw_reads: nanopore_reads
       metagenome: flye_metagenome_mode
       estimated_genome_size: estimated_total_genome_size
+      worker_threads: worker_threads
     out: [draft_assembly, assembly, output_directory]
   assemble_w_miniasm:
     run: miniasmWorkflow.cwl
