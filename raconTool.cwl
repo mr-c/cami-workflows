@@ -9,7 +9,7 @@ doc: |
   
 hints:
   DockerRequirement:
-    dockerPull: ttubb/racon:1.4.3
+    dockerPull: ttubb/racon:latest
   SoftwareRequirement:
     packages:
       racon:

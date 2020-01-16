@@ -22,7 +22,7 @@ requirements:
       - $(inputs.frags)
 
 arguments:
-  - valueFrom: $((inputs.assembly.nameroot)+"_pilon_polished") #output prefix
+  - valueFrom: "pilon" #output prefix
     prefix: --output
   - valueFrom: . #output directory
     prefix: --outdir 
@@ -86,7 +86,7 @@ outputs:
     label: Assembly after polishing with short reads.
     type: File
     outputBinding:
-      glob: $((inputs.assembly.nameroot)+"_pilon_polished.fasta")
+      glob: $("*.fasta")
   output_directory:
     label: Directory containing all pilon output.
     type: Directory

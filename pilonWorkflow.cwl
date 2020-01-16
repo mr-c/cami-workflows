@@ -43,13 +43,13 @@ outputs:
 steps:
   bowtie2_indexing:
     label: Create index for draft genome.
-    run: ../mapping/bowtie2IndexTool.cwl
+    run: bowtie2IndexTool.cwl
     in:
       reference: draft_genome
     out: [index_directory, index_files]
   mapping:
     label: Map short reads to index.
-    run: ../mapping/bowtie2MappingTool.cwl
+    run: bowtie2MappingTool.cwl
     in:
       worker_threads: worker_threads
       index_files: bowtie2_indexing/index_files
@@ -59,14 +59,14 @@ steps:
     out: [alignment_map]
   sam_sorting:
     label: Sort alignment map.
-    run: ../misc/samtoolsSortTool.cwl
+    run: samtoolsSortTool.cwl
     in:
       worker_threads: worker_threads
       alignment: mapping/alignment_map
     out: [sorted_alignment]
   sam_indexing:
     label: Create index for alignment map.
-    run: ../misc/samtoolsIndexTool.cwl
+    run: samtoolsIndexTool.cwl
     in:
       worker_threads: worker_threads
       bamfile: sam_sorting/sorted_alignment

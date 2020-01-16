@@ -49,13 +49,13 @@ outputs:
   contigs:
     type: File
     outputBinding:
-      glob: contigs.fasta
+      glob: SPAdes-assembly/contigs.fasta
   scaffolds:
     type: File
     outputBinding:
-      glob: scaffolds.fasta
+      glob: SPAdes-assembly/scaffolds.fasta
   output_directory:
     type: Directory
     outputBinding:
-      glob: .
+      glob: SPAdes-assembly
   

@@ -7,7 +7,7 @@ label: Tool wrapper for the flye de novo long read assembler.
 
 hints:
   DockerRequirement:
-    dockerPull: ttubb/latest
+    dockerPull: ttubb/flye:latest
   SoftwareRequirement:
     packages:
       flye:
@@ -19,37 +19,10 @@ arguments:
     prefix: --out-dir
 
 inputs:
-  reads:
-    label: Corrected or uncorrected pacbio or nanopore reads to assemble
-    type:
-      - type: record
-        name: pacbio_raw_reads
-        fields:
-          pacbio_raw_reads:
-            type: File
-            inputBinding:
-              prefix: --pacbio-raw
-      - type: record
-        name: pacbio_corrected_reads
-        fields:
-          pacbio_corrected_reads:
-            type: File
-            inputBinding:
-              prefix: --pacbio-corr
-      - type: record
-        name: nanopore_raw_reads
-        fields:
-          nanopore_raw_reads:
-            type: File
-            inputBinding:
-              prefix: --nano-raw
-      - type: record
-        name: nanopore_corrected_reads
-        fields:
-          nanopore_corrected_reads:
-            type: File
-            inputBinding:
-              prefix: --nano-corr
+  nanopore_raw_reads:
+    type: File
+    inputBinding:
+      prefix: --nano-raw
   worker_threads:
     label: Number of CPU threads used by tool
     type: int
@@ -75,7 +48,6 @@ inputs:
   metagenome:
     label: Set to true if assembling a metagenome
     type: boolean
-    default: False
     inputBinding:
       prefix: --meta
   skip_trestle:
@@ -102,17 +74,17 @@ outputs:
     label: Non-polished assembly created by flye
     type: File
     outputBinding:
-      glob: flye-output/00-assembly/draft_assembly.fasta
+      glob: flye-assembly/00-assembly/draft_assembly.fasta
   assembly:
     label: Polished assembly created by flye
     type: File
     outputBinding:
-      glob: flye-output/assembly.fasta
+      glob: flye-assembly/assembly.fasta
   output_directory:
     label: Directory containing all output produced by flye
     type: Directory
     outputBinding:
-      glob: flye-output
+      glob: flye-assembly
 
 s:author:
   - class: s:Person
