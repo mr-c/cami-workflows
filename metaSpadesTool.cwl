@@ -4,6 +4,9 @@ cwlVersion: v1.0
 class: CommandLineTool
 baseCommand: metaspades.py
 
+requirements:
+  InlineJavascriptRequirement: {}
+
 hints:
   DockerRequirement:
     dockerPull: ttubb/spades:latest
@@ -49,11 +52,11 @@ outputs:
   contigs:
     type: File
     outputBinding:
-      glob: SPAdes-assembly/contigs.fasta
+      glob: $("SPAdes-assembly/contigs.fasta")
   scaffolds:
     type: File
     outputBinding:
-      glob: SPAdes-assembly/scaffolds.fasta
+      glob: $("SPAdes-assembly/scaffolds.fasta")
   output_directory:
     type: Directory
     outputBinding:
